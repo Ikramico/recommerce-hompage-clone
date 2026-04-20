@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Stranger: Designer Handcrafted Furniture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f9f7f3;
+    --cream: #f2ede5;
+    --gold: #c9a86c;
+    --dark-gold: #a8854d;
+    --mid: #6b6560;
+    --light: #e8e2d8;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Montserrat', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { background: var(--white); color: var(--black); font-family: var(--sans); overflow-x: hidden; }
+
+  a { text-decoration: none; color: inherit; }
+  img { display: block; width: 100%; object-fit: cover; }
+
+  /* ─── TOP BAR ─── */
+  .topbar {
+    background: var(--black);
+    color: var(--white);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 8px 20px;
+  }
+
+  /* ─── HEADER / NAV ─── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    transition: background 0.4s, box-shadow 0.4s;
+  }
+  header.scrolled { background: rgba(249,247,243,0.97); box-shadow: 0 1px 0 rgba(0,0,0,0.08); }
+
+  .header-logo img { height: 36px; width: auto; filter: invert(0); }
+  .header-logo .logo-text {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    transition: color 0.4s;
+  }
+  header.scrolled .logo-text { color: var(--black); }
+
+  .nav-menu-btn {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.4s;
+  }
+  header.scrolled .nav-menu-btn { color: var(--black); }
+  .nav-menu-btn span { font-size: 16px; font-weight: 300; }
+
+  .header-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .header-actions a {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white);
+    transition: color 0.4s;
+  }
+  header.scrolled .header-actions a { color: var(--black); }
+  .header-actions a:hover { color: var(--gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #1a1510 0%, #2d2318 50%, #1a1510 100%);
+    z-index: 0;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1800&auto=format&fit=crop&q=80') center/cover no-repeat;
+    opacity: 0.55;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--white);
+    padding: 0 20px;
+  }
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(42px, 7vw, 88px);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: 0.02em;
+    max-width: 780px;
+    margin: 0 auto 40px;
+  }
+  .hero-cta {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.5);
+    padding: 14px 36px;
+    color: var(--white);
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .hero-cta:hover { background: var(--gold); border-color: var(--gold); }
+
+  /* ─── SECTION LABEL ─── */
+  .sec-label {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .sec-heading {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.5vw, 50px);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+  }
+
+  /* ─── TIMELESS CREATIONS INTRO ─── */
+  .tc-intro {
+    padding: 100px 60px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .tc-intro .sec-heading { max-width: 620px; }
+  .tc-intro .explore-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 30px;
+    color: var(--black);
+    border-bottom: 1px solid var(--black);
+    padding-bottom: 4px;
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .tc-intro .explore-link:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* ─── CATEGORY GRID ─── */
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px 100px;
+  }
+  .cat-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    cursor: pointer;
+    background: #1a1510;
+  }
+  .cat-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease, opacity 0.5s ease;
+    opacity: 0.85;
+  }
+  .cat-card:hover img { transform: scale(1.05); opacity: 0.65; }
+  .cat-card-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 60px 30px 30px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: var(--white);
+  }
+  .cat-card-label h3 {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+  .cat-card-label span {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    padding-bottom: 2px;
+  }
+
+  /* ─── FEATURED PRODUCT ─── */
+  .featured-product {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px 100px;
+    gap: 60px;
+    align-items: center;
+  }
+  .featured-product.reverse { direction: rtl; }
+  .featured-product.reverse > * { direction: ltr; }
+
+  .fp-image { position: relative; overflow: hidden; }
+  .fp-image img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+  .fp-text { padding: 40px 0; }
+  .fp-collection {
+    font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .fp-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 3vw, 54px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .fp-desc {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--mid);
+    margin-bottom: 36px;
+    max-width: 420px;
+  }
+  .btn-dark {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    transition: background 0.3s;
+  }
+  .btn-dark:hover { background: var(--gold); }
+
+  /* ─── BAR TABLE FULL BLEED ─── */
+  .bar-table-section {
+    position: relative;
+    height: 80vh;
+    min-height: 500px;
+    overflow: hidden;
+    margin-bottom: 100px;
+  }
+  .bar-table-section img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .bar-table-overlay {
+    position: absolute;
+    top: 0; bottom: 0; right: 0;
+    width: 42%;
+    background: rgba(10,10,10,0.82);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px;
+    color: var(--white);
+  }
+  .bar-table-overlay .sec-label { color: var(--gold); }
+  .bar-table-overlay h2 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 3vw, 52px);
+    font-weight: 300;
+    margin-bottom: 24px;
+    line-height: 1.1;
+  }
+  .bar-table-overlay p {
+    font-size: 13px;
+    line-height: 1.9;
+    color: rgba(249,247,243,0.7);
+    margin-bottom: 36px;
+  }
+  .btn-outline-white {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.45);
+    color: var(--white);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    transition: background 0.3s, border-color 0.3s;
+    width: fit-content;
+  }
+  .btn-outline-white:hover { background: var(--gold); border-color: var(--gold); }
+
+  /* ─── LATEST PROJECT ─── */
+  .latest-project {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px 100px;
+  }
+  .lp-header { margin-bottom: 50px; }
+  .lp-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 4px; }
+  .lp-main { position: relative; overflow: hidden; }
+  .lp-main img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+  .lp-side { display: flex; flex-direction: column; gap: 4px; }
+  .lp-side-top { flex: 1; overflow: hidden; position: relative; }
+  .lp-side-top img { width: 100%; height: 100%; object-fit: cover; }
+  .lp-side-bottom {
+    background: var(--black);
+    color: var(--white);
+    padding: 36px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .lp-side-bottom .fp-collection { color: var(--gold); }
+  .lp-side-bottom h3 { font-family: var(--serif); font-size: 24px; font-weight: 300; }
+  .lp-view-btn {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    padding-bottom: 2px;
+    width: fit-content;
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .lp-view-btn:hover { color: var(--gold); border-color: var(--gold); }
+  .lp-footer { margin-top: 36px; text-align: center; }
+  .btn-outline-dark {
+    display: inline-block;
+    border: 1px solid var(--black);
+    color: var(--black);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 14px 36px;
+    transition: background 0.3s, color 0.3s;
+  }
+  .btn-outline-dark:hover { background: var(--black); color: var(--white); }
+
+  /* ─── ABOUT STRIP ─── */
+  .about-strip {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1400px;
+    margin: 0 auto 100px;
+    padding: 0 60px;
+  }
+  .about-text { padding: 80px 60px 80px 0; }
+  .about-text .sec-label { margin-bottom: 20px; }
+  .about-text h2 { margin-bottom: 28px; }
+  .about-text p {
+    font-size: 13px;
+    line-height: 1.9;
+    color: var(--mid);
+    max-width: 480px;
+    margin-bottom: 36px;
+  }
+  .about-image { overflow: hidden; }
+  .about-image img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .testimonial blockquote {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--black);
+    margin-bottom: 24px;
+  }
+  .testimonial cite {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .testimonial cite span { color: var(--mid); letter-spacing: 0.1em; }
+  .testimonial-image { overflow: hidden; }
+  .testimonial-image img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+
+  /* ─── CRAFTED EDITS ─── */
+  .crafted-edits {
+    background: var(--black);
+    color: var(--white);
+    padding: 100px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 100px;
+  }
+  .crafted-edits::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1800&auto=format&fit=crop&q=80') center/cover no-repeat;
+    opacity: 0.25;
+  }
+  .crafted-edits-content { position: relative; z-index: 2; }
+  .crafted-edits .sec-label { color: var(--gold); }
+  .crafted-edits h2 {
+    font-family: var(--serif);
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 300;
+    margin-bottom: 40px;
+  }
+
+  /* ─── AS SEEN IN ─── */
+  .press-section {
+    padding: 60px 60px 100px;
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .press-section h2 {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 50px;
+    letter-spacing: 0.05em;
+  }
+  .press-track-wrap { overflow: hidden; }
+  .press-track {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+  .press-track img { height: 28px; width: auto; opacity: 0.55; filter: grayscale(1); transition: opacity 0.3s, filter 0.3s; }
+  .press-track img:hover { opacity: 1; filter: none; }
+  .press-name {
+    font-family: var(--serif);
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #aaa;
+    white-space: nowrap;
+    transition: color 0.3s;
+    padding: 0 10px;
+    border-right: 1px solid #ddd;
+  }
+  .press-name:last-child { border-right: none; }
+  .press-name:hover { color: var(--gold); }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ─── NEWSLETTER ─── */
+  .newsletter {
+    background: var(--cream);
+    padding: 80px 60px;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  .newsletter h3 {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+  .newsletter p { font-size: 12px; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 36px; text-transform: uppercase; }
+  .nl-form { display: flex; gap: 0; max-width: 480px; margin: 0 auto; }
+  .nl-form input {
+    flex: 1;
+    border: 1px solid var(--light);
+    border-right: none;
+    padding: 14px 20px;
+    font-size: 12px;
+    font-family: var(--sans);
+    background: var(--white);
+    outline: none;
+    letter-spacing: 0.05em;
+  }
+  .nl-form input::placeholder { color: #bbb; }
+  .nl-form button {
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    padding: 14px 28px;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: var(--sans);
+    transition: background 0.3s;
+  }
+  .nl-form button:hover { background: var(--gold); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 80px 60px 0;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-col h4 {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .footer-col p { font-size: 12px; line-height: 1.9; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { font-size: 11px; letter-spacing: 0.08em; color: rgba(255,255,255,0.6); text-transform: uppercase; transition: color 0.3s; }
+  .footer-col ul li a:hover { color: var(--gold); }
+  .footer-logo { margin-bottom: 24px; }
+  .footer-logo-text { font-family: var(--serif); font-size: 28px; font-weight: 400; letter-spacing: 0.08em; }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-bottom a { color: rgba(255,255,255,0.35); transition: color 0.3s; }
+  .footer-bottom a:hover { color: var(--gold); }
+  .footer-bottom-links { display: flex; gap: 24px; flex-wrap: wrap; }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    width: 40px; height: 1px;
+    background: var(--gold);
+    margin: 24px 0;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    header { padding: 0 20px; }
+    .header-actions { display: none; }
+    .tc-intro, .cat-grid, .featured-product, .latest-project, .about-strip, .testimonials, .press-section, .newsletter, footer { padding-left: 20px; padding-right: 20px; }
+    .cat-grid { grid-template-columns: 1fr; }
+    .featured-product { grid-template-columns: 1fr; gap: 30px; }
+    .featured-product.reverse { direction: ltr; }
+    .bar-table-overlay { width: 60%; padding: 30px; }
+    .about-strip { grid-template-columns: 1fr; }
+    .about-image { height: 320px; }
+    .testimonials { grid-template-columns: 1fr; gap: 50px; }
+    .lp-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="main-header">
+  <div class="nav-menu-btn" onclick="alert('Menu')">MENU <span>+</span></div>
+  <a href="#" class="header-logo">
+    <span class="logo-text">ROYAL STRANGER</span>
+  </a>
+  <div class="header-actions">
+    <a href="#">Search</a>
+    <a href="#">Contact</a>
+    <a href="#">Be a Partner</a>
+    <a href="#">Login</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">MA'AM COLLECTION</p>
+    <h1 class="hero-title">Unveiling the intimate narrative of empowerment.</h1>
+    <a href="#" class="hero-cta">EXPLORE MA'AM COLLECTION</a>
+  </div>
+</section>
+
+<!-- TIMELESS CREATIONS INTRO -->
+<div class="tc-intro">
+  <p class="sec-label">TIMELESS CREATIONS</p>
+  <h2 class="sec-heading">Royal Stranger creates unique furniture that blends elegance with bold creativity.</h2>
+  <a href="#" class="explore-link">EXPLORE OUR PRODUCTS →</a>
+</div>
+
+<!-- CATEGORY GRID -->
+<div class="cat-grid">
+  <div class="cat-card">
+    <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=800&auto=format&fit=crop&q=80" alt="Seating" loading="lazy">
+    <div class="cat-card-label">
+      <h3>Seating</h3>
+      <span>VIEW CATEGORY</span>
+    </div>
+  </div>
+  <div class="cat-card">
+    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80" alt="Lighting" loading="lazy">
+    <div class="cat-card-label">
+      <h3>Lighting</h3>
+      <span>VIEW CATEGORY</span>
+    </div>
+  </div>
+  <div class="cat-card">
+    <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=800&auto=format&fit=crop&q=80" alt="Casegoods" loading="lazy">
+    <div class="cat-card-label">
+      <h3>Casegoods</h3>
+      <span>VIEW CATEGORY</span>
+    </div>
+  </div>
+</div>
+
+<!-- MARSHMALLOW SWIVEL ARMCHAIR -->
+<div class="featured-product">
+  <div class="fp-image">
+    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&auto=format&fit=crop&q=80" alt="Marshmallow Swivel Armchair" loading="lazy">
+  </div>
+  <div class="fp-text">
+    <p class="fp-collection">Marshmallow Collection</p>
+    <h2 class="fp-title">Marshmallow<br>Swivel Armchair</h2>
+    <div class="divider"></div>
+    <p class="fp-desc">Soft power, spun with style. A swivel armchair with playful rounded forms, vibrant colors, and elegant design that keeps the conversation flowing.</p>
+    <a href="#" class="btn-dark">DISCOVER</a>
+  </div>
+</div>
+
+<!-- JULIA BAR TABLE FULL BLEED -->
+<div class="bar-table-section">
+  <img src="https://images.unsplash.com/photo-1549497538-303791108f95?w=1800&auto=format&fit=crop&q=80" alt="Julia Bar Table" loading="lazy">
+  <div class="bar-table-overlay">
+    <p class="sec-label">MA'AM COLLECTION</p>
+    <h2>JULIA BAR TABLE</h2>
+    <p>Julia Bar Table features a marble top, porcelain-accented supports, and brass details, creating a sculptural centerpiece that elevates social gatherings and contemporary interiors.</p>
+    <a href="#" class="btn-outline-white">VIEW PRODUCT</a>
+  </div>
+</div>
+
+<!-- LATEST PROJECT -->
+<div class="latest-project">
+  <div class="lp-header">
+    <p class="sec-label">LATEST PROJECT</p>
+    <h2 class="sec-heading">Amelia Carter Interiors with<br>Grace Swivel Armchair</h2>
+  </div>
+  <div class="lp-grid">
+    <div class="lp-main">
+      <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=900&auto=format&fit=crop&q=80" alt="Latest Project" loading="lazy">
+    </div>
+    <div class="lp-side">
+      <div class="lp-side-top">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&auto=format&fit=crop&q=80" alt="Grace Swivel Armchair" loading="lazy">
+      </div>
+      <div class="lp-side-bottom">
+        <p class="fp-collection">Marshmallow Collection</p>
+        <h3>Grace Swivel Armchair</h3>
+        <a href="#" class="lp-view-btn">VIEW PRODUCT</a>
+      </div>
+    </div>
+  </div>
+  <div class="lp-footer">
+    <a href="#" class="btn-outline-dark">SEE ALL PROJECTS</a>
+  </div>
+</div>
+
+<!-- ABOUT STRIP -->
+<div class="about-strip">
+  <div class="about-text">
+    <p class="sec-label">CREATIVITY AND BOLDNESS</p>
+    <h2 class="sec-heading">We value the new and the extraordinary</h2>
+    <div class="divider"></div>
+    <p>Royal Stranger creates unique furniture that blends elegance with bold creativity. "Royal" stands for excellence and fine materials; "Stranger" reflects a passion for sensory, unexpected design. Inspired by nature, architecture, jewelry, and cinema, each made-to-order piece is sustainable, customizable, and crafted to turn any space into a work of art.</p>
+    <a href="#" class="btn-dark">ABOUT US</a>
+  </div>
+  <div class="about-image">
+    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&auto=format&fit=crop&q=80" alt="About Royal Stranger" loading="lazy">
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="testimonials">
+  <div class="testimonial">
+    <blockquote>"Working with Royal Stranger is a joy, every piece exudes artistry, craftsmanship, and a distinct character that captures attention and sparks conversation."</blockquote>
+    <p style="font-size:12px;line-height:1.8;color:var(--mid);margin-bottom:20px;">"Their team combines professionalism with warmth, making each collaboration seamless and inspiring. Every piece in their collection reflects a perfect balance between bold design and elegance."</p>
+    <cite>Angelo Garrido and Ana Curiel <span>Casa Ankan</span></cite>
+  </div>
+  <div class="testimonial">
+    <div class="testimonial-image" style="margin-bottom:30px;">
+      <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=700&auto=format&fit=crop&q=80" alt="Testimonial" loading="lazy">
+    </div>
+    <blockquote>"Royal Stranger pieces don't enter quietly – they arrive."</blockquote>
+    <p style="font-size:12px;line-height:1.8;color:var(--mid);margin-bottom:20px;">"They have presence, density, challenge symmetry, and impose a new rhythm on the space. More than furniture, they are aesthetic statements, objects with their own pulse."</p>
+    <cite>Patrícia Lopes Rego <span>PLR - Interior Design Studio, Portugal</span></cite>
+  </div>
+</div>
+
+<!-- CRAFTED EDITS -->
+<div class="crafted-edits">
+  <div class="crafted-edits-content">
+    <p class="sec-label">SOFIA</p>
+    <h2>The Crafted Edits</h2>
+    <a href="#" class="btn-outline-white">SEE ALL ARTICLES</a>
+  </div>
+</div>
+
+<!-- AS SEEN IN -->
+<div class="press-section">
+  <h2>AS SEEN IN</h2>
+  <div class="press-track-wrap">
+    <div class="press-track">
+      <span class="press-name">ARCHITECTURAL DIGEST</span>
+      <span class="press-name">ELLE DÉCOR</span>
+      <span class="press-name">WALLPAPER</span>
+      <span class="press-name">DEZEEN</span>
+      <span class="press-name">VOGUE LIVING</span>
+      <span class="press-name">FRAME</span>
+      <span class="press-name">INTERIOR DESIGN</span>
+      <span class="press-name">SURFACE</span>
+      <span class="press-name">MONOCLE</span>
+      <span class="press-name">ICON</span>
+      <span class="press-name">DOMUS</span>
+      <span class="press-name">CASA VOGUE</span>
+      <!-- duplicate for seamless loop -->
+      <span class="press-name">ARCHITECTURAL DIGEST</span>
+      <span class="press-name">ELLE DÉCOR</span>
+      <span class="press-name">WALLPAPER</span>
+      <span class="press-name">DEZEEN</span>
+      <span class="press-name">VOGUE LIVING</span>
+      <span class="press-name">FRAME</span>
+      <span class="press-name">INTERIOR DESIGN</span>
+      <span class="press-name">SURFACE</span>
+      <span class="press-name">MONOCLE</span>
+      <span class="press-name">ICON</span>
+      <span class="press-name">DOMUS</span>
+      <span class="press-name">CASA VOGUE</span>
+    </div>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <h3>ROYAL NEWS</h3>
+  <p>Be part of our world and discover the latest</p>
+  <div class="nl-form">
+    <input type="text" placeholder="Enter Name">
+    <input type="email" placeholder="Enter Email">
+    <button>Subscribe</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-logo">
+        <span class="footer-logo-text">ROYAL STRANGER</span>
+      </div>
+      <p>Rua Dr. Florido Toscano, 109<br>4405-612 Vila Nova de Gaia<br>Porto – Portugal</p>
+      <p style="margin-top:12px;">info@royalstranger.com</p>
+      <p style="margin-top:8px;"><a href="#" style="color:var(--gold);font-size:11px;letter-spacing:0.1em;">Book a Showroom Visit →</a></p>
+    </div>
+    <div class="footer-col">
+      <h4>Timeless Creations</h4>
+      <ul>
+        <li><a href="#">All Products</a></li>
+        <li><a href="#">Seating</a></li>
+        <li><a href="#">Casegoods</a></li>
+        <li><a href="#">Tables</a></li>
+        <li><a href="#">Lighting</a></li>
+        <li><a href="#">Other</a></li>
+        <li><a href="#">Limited Edition</a></li>
+        <li><a href="#">Collections</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Sofia – The Crafted Edits</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <ul>
+        <li><a href="#">Pinterest</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+      <a href="#">Complaint's Book</a>
+    </div>
+    <span>Designed by Après – Creative Studio · Royal Stranger All Rights Reserved</span>
+  </div>
+</footer>
+
+<script>
+  // Sticky header
+  const header = document.getElementById('main-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
+</script>
+</body>
+</html>
